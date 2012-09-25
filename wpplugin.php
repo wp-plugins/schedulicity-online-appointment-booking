@@ -54,7 +54,7 @@ function schedulicity_options_do_page() {
 			<?php $options = get_option('user_bizkey'); ?>			
 			<ul style="font-size: 16px">
 			Biz Key: <input type="text" name="user_bizkey[bizkey]" value="<?php echo $options['bizkey']; ?>" /> <span style="margin-left: 20px">
-			If you don't have a Schedulicity account <a href="http://www.schedulicity.com/?anic=wordpress" target="_blank">click here</a> to get 60 days free.
+			If you don't have a Schedulicity account <a href="http://www.schedulicity.com/?anic=wordpress" target="_blank">click here</a> to get 30 days free.
 			</span>
 			</ul>
 			<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px; margin-top: 10px ">
