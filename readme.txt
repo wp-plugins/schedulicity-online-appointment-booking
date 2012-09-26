@@ -7,7 +7,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 15 million appointments booked. **Only available to users in the U.S. and Canada.**
+The leader in online appointment booking with over 15 million appointments booked. *Only available to users in the U.S. and Canada.
 
 == Description ==
 
