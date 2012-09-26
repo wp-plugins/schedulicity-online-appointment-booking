@@ -1,21 +1,23 @@
 === Plugin Name ===
 Contributors: jprummer
-Tags: online scheduling, online appointment book, hair, massage, nails
+Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness
 Requires at least: 3.0.1
 Tested up to: 3.4
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 15 million appointments booked.
+The leader in online appointment booking with over 15 million appointments booked. **Only available to users in the U.S. and Canada.**
 
 == Description ==
 
 This plugin allows Schedulicity's 22k business users to easily integrate their booking schedules with their 
 wordpress sites. It's a three step setup. Once a user installs Schedulicity on their site, they simply need to 
 insert their 6 character unique business key, select the style they want to use, and paste the [schedule_now] 
-shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a special 
-60 day free trial via the link provided on the plugin home page. 
+shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a 
+30 day free trial via the link provided on the plugin home page. 
+
+**Note: This plugin is only available to users in the U.S. and Canada.**
 
 == Installation ==
 
@@ -33,7 +35,7 @@ Hair stylists, massage therapists, chiropractors - anyone with an appointment ba
 
 = Is it free? =
 
-The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 60 days, or if you're one of the 22k people that already use it
+The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 30 days, or if you're one of the 22k people that already use it
 you just need to know your biz key.
 
 == Screenshots ==
