@@ -11,7 +11,7 @@ The leader in online appointment booking with over 15 million appointments booke
 
 == Description ==
 
-This plugin allows Schedulicity's 22k business users to easily integrate their booking schedules with their 
+This plugin allows Schedulicity's thousands of business users to easily integrate their booking schedules with their 
 wordpress sites. It's a three step setup. Once a user installs Schedulicity on their site, they simply need to 
 insert their 6 character unique business key, select the style they want to use, and paste the [schedule_now] 
 shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a 
