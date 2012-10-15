@@ -24,8 +24,7 @@ You guys rock. Thanks so much for your quick response and for being supportive. 
 *Andrea - Omaha, NE*
 
 Just was so happy with the results I had to send you an email.
-After finishing the start up for schedulicity & fb page it was as late as 7:00 pm before I sent out my email announcements. It's 10 pm now & just had my 5th booking. $$$ This will be great! I just have to show up the hours I'm open & they will be coming in.  
-SMILING!.... just made me more than $500
+After finishing the start up for schedulicity & fb page it was as late as 7:00 pm before I sent out my email announcements. It's 10 pm now & just had my 5th booking. $$$ This will be great! I just have to show up the hours I'm open & they will be coming in. SMILING!.... just made me more than $500
 
 *Tammie - Friendswood, TX*
 
