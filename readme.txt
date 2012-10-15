@@ -15,7 +15,25 @@ This plugin allows Schedulicity's thousands of business users to easily integrat
 wordpress sites. It's a three step setup. Once a user installs Schedulicity on their site, they simply need to 
 insert their 6 character unique business key, select the style they want to use, and paste the [schedule_now] 
 shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a 
-30 day free trial via the link provided on the plugin home page. 
+30 day free trial via the link provided on the plugin home page.
+
+**Testimonials**
+
+You guys rock. Thanks so much for your quick response and for being supportive. I've only been using Schedulicity for a couple of days, and already have clients booking online and loving it. Not to mention you have the best customer service around.
+
+*Andrea - Omaha, NE*
+
+Just was so happy with the results I had to send you an email.
+After finishing the start up for schedulicity & fb page it was as late as 7:00 pm before I sent out my email announcements. It's 10 pm now & just had my 5th booking. $$$ This will be great! I just have to show up the hours I'm open & they will be coming in.  
+SMILING!.... just made me more than $500
+
+*Tammie - Friendswood, TX*
+This software is amazing, cudos to you, 
+it is saving me almost $200 a month.
+
+*Jason - Middletown, RI*
+ 
+<a href="http://www.schedulicity.com/?anic=wordpress">Click here</a> for your 30 day free trial.
 
 **Note: This plugin is only available to users in the U.S. and Canada.**
 
