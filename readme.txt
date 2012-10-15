@@ -28,6 +28,7 @@ After finishing the start up for schedulicity & fb page it was as late as 7:00 p
 SMILING!.... just made me more than $500
 
 *Tammie - Friendswood, TX*
+
 This software is amazing, cudos to you, 
 it is saving me almost $200 a month.
 
