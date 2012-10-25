@@ -53,7 +53,7 @@ Hair stylists, massage therapists, chiropractors - anyone with an appointment ba
 
 = Is it free? =
 
-The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 30 days, or if you're one of the 22k people that already use it
+The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 30 days, or if you're one of the thousands of businesses that already use it
 you just need to know your biz key.
 
 == Screenshots ==
