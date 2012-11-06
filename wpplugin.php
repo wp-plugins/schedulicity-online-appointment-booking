@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 1.0
+Version: 1.1
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -124,11 +124,10 @@ if ($schedulicity_widget==1) {
 	function embedded_widget() {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
-		echo '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=';
-		echo $sched_bizkey;
-		echo '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=';
-		echo $sched_bizkey; 
-		echo '" title="Online Scheduling">Schedule Now</a></noscript>';
+		$embedded_shortcode = <<<HTML
+		<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=$sched_bizkey"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" title="Online Scheduling">Schedule Now</a></noscript>
+HTML;
+		return $embedded_shortcode;
 				}
 		add_shortcode('schedule_now', 'embedded_widget');
 }
@@ -152,14 +151,13 @@ function responsive_widget() {
 		$maxheight = $user_maxheight['maxheight'];
 		$user_minheight = get_option('user_minheight');
 		$minheight = $user_minheight['minheight'];
-		echo '<iframe src="https://m.schedulicity.com/Scheduling/SelectService/';
-		echo $sched_bizkey;
-		echo '" style="width:100%; height: 100%; max-height:';
-		echo $maxheight;
-		echo 'px;min-height: ';
-		echo $minheight;
-		echo 'px"></iframe>';
+		$unit = 'px';
+		$responsive_shortcode = <<<HTML
+		<iframe src="https://m.schedulicity.com/Scheduling/SelectService/$sched_bizkey" style="width:100%; height: 100%; max-height: $maxheight$unit;min-height: $minheight$unit"></iframe>
+HTML;
+		return $responsive_shortcode;
 				}
+		
 		add_shortcode('schedule_now', 'responsive_widget');
 }
 ?>
