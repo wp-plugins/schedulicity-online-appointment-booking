@@ -153,7 +153,9 @@ function responsive_widget() {
 		$minheight = $user_minheight['minheight'];
 		$unit = 'px';
 		$responsive_shortcode = <<<HTML
-		<iframe src="https://m.schedulicity.com/Scheduling/SelectService/$sched_bizkey" style="width:100%; height: 100%; max-height: $maxheight$unit;min-height: $minheight$unit"></iframe>
+		<iframe src="https://m.schedulicity.com/Scheduling/SelectService/$sched_bizkey" style="position: absolute; top: -9999em; visibility: hidden;
+		width:100%; height: 100%; max-height: $maxheight$unit;min-height: $minheight$unit" onload="this.style.position='static'; 
+		this.style.visibility='visible';"></iframe>
 HTML;
 		return $responsive_shortcode;
 				}
