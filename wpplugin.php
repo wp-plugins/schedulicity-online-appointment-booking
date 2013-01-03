@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 1.1.2
+Version: 1.1.3
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -80,7 +80,10 @@ function schedulicity_options_do_page() {
 			</div>
 			<div>
 			<ul style="font-size: 14px; margin-left: 20px">
-			The responsive design will automatically fit the width of any of your pages, posts or widgets. Just set the minimum/maximum height and you're ready to go. See an <a href="http://www.wpovernight.com/schedulicity/responsive-design/" target="_blank">example here.</a>
+			The responsive design will automatically fit the width of any of your pages, posts or widgets. Just set the minimum/maximum height 
+			and you're ready to go. See an <a href="http://www.wpovernight.com/schedulicity/responsive-design/" target="_blank">example here
+			</a>. <strong>Note:</strong> Some Internet Explorer users may have trouble with the responsive widget. We recommend adding the Schedule Now
+			button as well (step 4). <a href="http://www.wpovernight.com/schedulicity/responsive-button/" target="_blank">See example</a>
 			</ul>	
 			<?php $options = get_option('user_maxheight'); ?>
 			<ul style="font-size: 14px; margin-left: 20px">
@@ -96,7 +99,13 @@ function schedulicity_options_do_page() {
 			<ul style="font-size: 16px">
 			Just insert the shortcode <span style="background: yellow">[schedule_now]</span> 
 			on any page or post. Your booking calendar will automatically appear.
-			</ul>	
+			</ul>
+			<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Four (Optional) - Add the Schedule Now Button</li>
+			<ul style="font-size: 16px">
+			Just insert the shortcode <span style="background: yellow">[btn_center]</span> (center aligned), <span style="background: yellow">[btn_left]</span>
+			(left aligned), or <span style="background: yellow">[btn_right]</span>  (right aligned)
+			on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear.
+			</ul>
 			</ol>
 			<p class="submit">
 			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
@@ -162,4 +171,39 @@ HTML;
 		
 		add_shortcode('schedule_now', 'responsive_widget');
 }
+function sched_button_left() {
+		$user_bizkey = get_option('user_bizkey');
+		$sched_bizkey = $user_bizkey['bizkey'];
+		$sched_button_left_sc = <<<HTML
+		<div style="text-align: left"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
+		alt="Schedule online now" border="0" /></a></div>
+HTML;
+		return $sched_button_left_sc;
+		}
+		
+function sched_button_center() {
+		$user_bizkey = get_option('user_bizkey');
+		$sched_bizkey = $user_bizkey['bizkey'];
+		$sched_button_center_sc = <<<HTML
+		<div style="text-align: center"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
+		alt="Schedule online now" border="0" /></a></div>
+HTML;
+		return $sched_button_center_sc;
+}
+function sched_button_right() {
+		$user_bizkey = get_option('user_bizkey');
+		$sched_bizkey = $user_bizkey['bizkey'];
+		$sched_button_right_sc = <<<HTML
+		<div style="text-align: right"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
+		alt="Schedule online now" border="0" /></a></div>
+HTML;
+		return $sched_button_right_sc;
+}
+add_shortcode('btn_left' , 'sched_button_left');
+add_shortcode('btn_center' , 'sched_button_center');
+add_shortcode('btn_right' , 'sched_button_right');
+
 ?>

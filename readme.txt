@@ -3,7 +3,7 @@ Contributors: jprummer
 Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,8 +66,10 @@ you just need to know your biz key.
 
 == Changelog ==
 
-No Changes 
+V 1.0.1 Fixed so widgets would display inline with text instead of at top of page
+v 1.0.2 Fixed scrolling issue
+v 1.0.3 Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue
 
 == Upgrade Notice ==
 
-No Upgrades
+Some small, but significant changes have been made. Please see the changelog for version details.
