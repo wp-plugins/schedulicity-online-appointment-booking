@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: jprummer
-Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness
+Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.1.3
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,8 @@ This plugin allows Schedulicity's thousands of business users to easily integrat
 wordpress sites. It's a three step setup. Once a user installs Schedulicity on their site, they simply need to 
 insert their 6 character unique business key, select the style they want to use, and paste the [schedule_now] 
 shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a 
-30 day free trial via the link provided on the plugin home page.
+30 day free trial via the link provided on the plugin home page. Now includes functionality to display multiple 
+Schedulicity accounts on one site.
 
 **Testimonials**
 
@@ -56,6 +57,10 @@ Hair stylists, massage therapists, chiropractors - anyone with an appointment ba
 The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 30 days, or if you're one of the thousands of businesses that already use it
 you just need to know your biz key.
 
+= Can more than one Schedulicity user use the plugin on the same site? =
+
+Yes. Please see the section about using the Schedulicity plugin for 2 or more users, found on the plugin settings page (available after install). 
+
 == Screenshots ==
 
 1. This screen demonstrates the easy, 3 step setup. 
@@ -66,10 +71,14 @@ you just need to know your biz key.
 
 == Changelog ==
 
-V 1.0.1 Fixed so widgets would display inline with text instead of at top of page
-v 1.0.2 Fixed scrolling issue
-v 1.0.3 Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue
+V 1.1.1 Fixed so widgets would display inline with text instead of at top of page
+
+v 1.1.2 Fixed scrolling issue
+
+v 1.1.3 Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue
+
+v. 1.2.1 Added functionality for multiple Schedulicity accounts
 
 == Upgrade Notice ==
 
-Some small, but significant changes have been made. Please see the changelog for version details.
+Small, but significant changes have been made. Please see the changelog for version details.

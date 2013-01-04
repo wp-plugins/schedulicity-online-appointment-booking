@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 1.1.3
+Version: 1.2.1
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -110,6 +110,13 @@ function schedulicity_options_do_page() {
 			<p class="submit">
 			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 			</p>
+			<h2><strong>Schedulicity Plugin for 2+ Accounts.</strong></h2>
+			<p style="margin-left: 20px; font-size: 16px">Using the Schedulicity plugin with multiple accounts is easy! Just add 
+			<span style="background: yellow">bizkey=" "</span> to the [schedule_now] or [btn] shortcodes and place your bizkey between the quotes. 
+			Examples: <span style="background: yellow">[schedule_now bizkey="SSTJP8"]</span> or 
+			<span style="background: yellow">[btn_center bizkey="SSTJP8"]</span>. With this method you can add as many booking calendars or buttons
+			to your site as needed.</p>
+			
 		</form>
 		</div>
 	</div>
@@ -130,30 +137,29 @@ function schedulicity_options_validate($input) {
 $widget_type = get_option('widget_type');
 $schedulicity_widget = $widget_type['embedded'];
 if ($schedulicity_widget==1) {
-	function embedded_widget() {
-		$user_bizkey = get_option('user_bizkey');
-		$sched_bizkey = $user_bizkey['bizkey'];
-		$embedded_shortcode = <<<HTML
-		<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=$sched_bizkey"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" title="Online Scheduling">Schedule Now</a></noscript>
-HTML;
-		return $embedded_shortcode;
+	function embedded_widget($atts, $content=null) {
+	$user_bizkey = get_option('user_bizkey');
+	$sched_bizkey = $user_bizkey['bizkey'];
+	extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
+		$return = $content;
+		$return .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+		return $return;
 				}
 		add_shortcode('schedule_now', 'embedded_widget');
 }
 elseif ($schedulicity_widget==2) {
-function overlay_widget() {
+function overlay_widget($atts, $content=null) {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
-		echo '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/popupjs.aspx?business=';
-		echo $sched_bizkey;
-		echo '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=';
-		echo $sched_bizkey;
-		echo '" title="Online Scheduling">Schedule Now</a></noscript>';
+		extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
+		$return = $content;
+		$return .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/popupjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+		return $return;		
 				}
 		add_shortcode('schedule_now', 'overlay_widget');
 	}
 else {
-function responsive_widget() {
+function responsive_widget($atts, $content=null) {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
 		$user_maxheight = get_option('user_maxheight');
@@ -161,42 +167,47 @@ function responsive_widget() {
 		$user_minheight = get_option('user_minheight');
 		$minheight = $user_minheight['minheight'];
 		$unit = 'px';
+		extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
+		$return = $content;
 		$responsive_shortcode = <<<HTML
-		<iframe src="https://m.schedulicity.com/Scheduling/SelectService/$sched_bizkey" style="position: absolute; top: -9999em; visibility: hidden;
+		<iframe src="https://m.schedulicity.com/Scheduling/SelectService/$bizkey" style="position: absolute; top: -9999em; visibility: hidden;
 		width:100%; height: 100%; max-height: $maxheight$unit;min-height: $minheight$unit" onload="this.style.position='static'; 
 		this.style.visibility='visible';"></iframe>
 HTML;
-		return $responsive_shortcode;
+		return $responsive_shortcode;		
 				}
 		
 		add_shortcode('schedule_now', 'responsive_widget');
 }
-function sched_button_left() {
+function sched_button_left($atts) {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
+		extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
 		$sched_button_left_sc = <<<HTML
-		<div style="text-align: left"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		<div style="text-align: left"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$bizkey" 
 		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
 		alt="Schedule online now" border="0" /></a></div>
 HTML;
 		return $sched_button_left_sc;
 		}
 		
-function sched_button_center() {
+function sched_button_center($atts) {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
+		extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
 		$sched_button_center_sc = <<<HTML
-		<div style="text-align: center"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		<div style="text-align: center"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$bizkey" 
 		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
 		alt="Schedule online now" border="0" /></a></div>
 HTML;
 		return $sched_button_center_sc;
 }
-function sched_button_right() {
+function sched_button_right($atts) {
 		$user_bizkey = get_option('user_bizkey');
 		$sched_bizkey = $user_bizkey['bizkey'];
+		extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
 		$sched_button_right_sc = <<<HTML
-		<div style="text-align: right"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$sched_bizkey" 
+		<div style="text-align: right"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=$bizkey" 
 		title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" 
 		alt="Schedule online now" border="0" /></a></div>
 HTML;
