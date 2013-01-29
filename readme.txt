@@ -2,8 +2,8 @@
 Contributors: jprummer
 Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
-Tested up to: 3.5
-Stable tag: 1.2.1
+Tested up to: 3.5.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,13 +71,25 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 
 == Changelog ==
 
-V 1.1.1 Fixed so widgets would display inline with text instead of at top of page
+= 1.2.2 = 
 
-v 1.1.2 Fixed scrolling issue
+Removed Responsive Widget, due to scheduling issues with Internet Explorer.
 
-v 1.1.3 Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue
+= 1.2.1 = 
 
-v. 1.2.1 Added functionality for multiple Schedulicity accounts
+Added functionality for multiple Schedulicity accounts.
+
+= 1.1.3 = 
+
+Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue.
+
+= 1.1.2 = 
+
+Fixed scrolling issue.
+
+= 1.1.1 = 
+
+Fixed so widgets would display inline with text instead of at top of page.
 
 == Upgrade Notice ==
 
