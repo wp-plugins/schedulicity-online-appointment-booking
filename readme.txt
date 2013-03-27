@@ -13,7 +13,7 @@ The leader in online appointment booking with over 20 million appointments booke
 
 If you already have Schedulicity, easily integrate with your site using the [schedule_now] and [btn] shortcodes. You just need your
 6 character unique business key which you can find by logging into your account or by emailing 
-<a href="mailto:support@schedulicity.com">support@schedulicity.com</a>
+<a href="mailto:support@schedulicity.com">support@schedulicity.com</a>.
 
 Features:
 
@@ -22,7 +22,7 @@ Features:
 * Support for multiple accounts.
 * 3 minute setup with great support.
 
-If you don't already have Schedulicity you can get your 30 day trial by <a href="http://www.schedulicity.com/?anic=wordpress">clicking here</a>
+If you don't already have Schedulicity you can get your 30 day trial by <a href="http://www.schedulicity.com/?anic=wordpress">clicking here</a>.
 
 **Testimonials**
 
