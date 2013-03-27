@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 1.2.2
+Version: 1.2.3
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -38,10 +38,7 @@ function schedulicity_add_page() {
 // Draw the menu page itself
 function schedulicity_options_do_page() {
 ?>
-	<div class="wrap">
-		<div style="-moz-border-radius: 2px;border-radius: 2px;margin-left:5%; margin-right:5%; height: auto;font-size:18px;padding: 7px;-moz-box-shadow: 0 0 5px #FF0000;-webkit-box-shadow: 0 0 5px #FF0000;box-shadow: 0 0 5px #FF0000;background: #FCEBEB;margin:5%;margin-bottom: 0%;line-height: 20px">
-			<strong>Important Note:</strong> Due to Internet Explorer scheduling issues with the Responsive Widget, it is no longer available in this plugin release and has been replaced with the Embedded Widget. Look for an awesome substitute in the coming months!
-		</div>	
+	<div class="wrap">	
 		<div style="background: #FFF;-moz-border-radius: 3px;border-radius: 3px;margin:5%;margin-top: 30px;padding: 10px;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;">
 			
 		<div style="margin-bottom: 20px">
@@ -70,12 +67,12 @@ function schedulicity_options_do_page() {
 			<li><span style="margin-right: 20px"><strong>Embedded</strong></span><input name="widget_type[embedded]" type="radio" value="1" <?php checked('1', $options['embedded']); ?> /></li>
 			<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px ">
 			This widget is built right into a page on your site. You'll need to set aside 652 x 479 pixels for it to work. See
-			an <a href="http://www.wpovernight.com/schedulicity/embedded-widget/" target="_blank">example here.</a>
+			an <a href="http://schedulicity.wpovernight.com/embedded-widget/" target="_blank">example here.</a>
 			</ul>
 			<li><span style="margin-right: 46px"><strong>Overlay</strong></span><input name="widget_type[embedded]" type="radio" value="2" <?php checked('2', $options['embedded']); ?> /></li>
 			<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px">
 			A schedule now button will hang on the side of your screen. Your schedule will pop up when the user clicks the button. See
-			an <a href="http://www.wpovernight.com/schedulicity/overlay-widget/" target="_blank">example here.</a>
+			an <a href="http://schedulicity.wpovernight.com/overlay-widget/" target="_blank">example here.</a>
 			</ul>
 			<li><span style="margin-right: 45px"><strong>Buttons</strong></span><!-- <input name="widget_type[embedded]" type="radio" value="3" <?php checked('3', $options['embedded']); ?> /> --></li>
 			</ul>
@@ -84,7 +81,7 @@ function schedulicity_options_do_page() {
 			<ul style="font-size: 14px; margin-left: 20px">
 			Just insert the shortcode <span style="background: #b0f26d">[btn_center]</span> (center aligned), <span style="background: #b0f26d">[btn_left]</span>
 			(left aligned), or <span style="background: #b0f26d">[btn_right]</span>  (right aligned)
-			on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear. <a href="http://www.wpovernight.com/schedulicity/responsive-button/" target="_blank">See example</a>
+			on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear. <a href="http://schedulicity.wpovernight.com/responsive-button/" target="_blank">See example</a>
 			</ul>	
 			</div>
 			</div>

@@ -3,20 +3,26 @@ Contributors: jprummer
 Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 15 million appointments booked. *Only available to users in the U.S. and Canada.
+The leader in online appointment booking with over 20 million appointments booked. *Only available to users in the U.S. and Canada.
 
 == Description ==
 
-This plugin allows Schedulicity's thousands of business users to easily integrate their booking schedules with their 
-wordpress sites. It's a three step setup. Once a user installs Schedulicity on their site, they simply need to 
-insert their 6 character unique business key, select the style they want to use, and paste the [schedule_now] 
-shortcode into a page or post. If they don't already have a Schedulicity account, they are eligible for a 
-30 day free trial via the link provided on the plugin home page. Now includes functionality to display multiple 
-Schedulicity accounts on one site.
+If you already have Schedulicity, easily integrate with your site using the [schedule_now] and [btn] shortcodes. You just need your
+6 character unique business key which you can find by logging into your account or by emailing 
+<a href="mailto:support@schedulicity.com>support@schedulicity.com</a>
+
+Features:
+
+* 3 widget styles & 3 button styles.
+* Use a button, widget, or both!
+* Support for multiple accounts.
+* 3 minute setup with great support.
+
+If you don't already have Schedulicity you can get your 30 day trial by <a href="http://www.schedulicity.com/?anic=wordpress">clicking here</a>
 
 **Testimonials**
 
@@ -70,6 +76,10 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 5. Demonstration of the [schedule_now] shortcode integration.
 
 == Changelog ==
+
+= 1.2.3 =
+
+Some basic cleanup
 
 = 1.2.2 = 
 
