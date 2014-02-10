@@ -1,9 +1,9 @@
-=== Plugin Name ===
+=== Schedulicity - Easy Online Scheduling ===
 Contributors: jprummer
-Tags: online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
+Tags: scheduling, appointment scheduling, appointment, online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
-Tested up to: 3.5.1
-Stable tag: 1.2.3
+Tested up to: 3.8.1
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,16 +11,16 @@ The leader in online appointment booking with over 20 million appointments booke
 
 == Description ==
 
-If you already have Schedulicity, easily integrate with your site using the [schedule_now] and [btn] shortcodes. You just need your
+If you already have Schedulicity, easily integrate with your site using the [schedule_now] and [schedule_now_button] shortcodes. You just need your
 6 character unique business key which you can find by logging into your account or by emailing 
 <a href="mailto:support@schedulicity.com">support@schedulicity.com</a>.
 
 Features:
 
-* 3 widget styles & 3 button styles.
+* 2 widget styles & 3 button styles.
 * Use a button, widget, or both!
 * Support for multiple accounts.
-* 3 minute setup with great support.
+* Easy setup with great support.
 
 If you don't already have Schedulicity you can get your 30 day trial by <a href="http://www.schedulicity.com/?anic=wordpress">clicking here</a>.
 
@@ -61,7 +61,7 @@ Hair stylists, massage therapists, chiropractors - anyone with an appointment ba
 = Is it free? =
 
 The plugin is completely free, but the software is $19.95/month. You can try Schedulicity for 30 days, or if you're one of the thousands of businesses that already use it
-you just need to know your biz key.
+you just need to know your business key to get started.
 
 = Can more than one Schedulicity user use the plugin on the same site? =
 
@@ -69,13 +69,16 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 
 == Screenshots ==
 
-1. This screen demonstrates the easy, 3 step setup. 
+1. Screenshot of the settings panel. 
 2. This is an example of the overlay widget.
 3. This is an example of the embedded widget.
-4. This is an example of the responsive widget.
-5. Demonstration of the [schedule_now] shortcode integration.
+4. Schedule Now Buttons aligned center, left and right.
 
 == Changelog ==
+
+= 2.0.0 =
+
+Improved Code and more flexible shortcode management
 
 = 1.2.3 =
 
