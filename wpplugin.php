@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 2.0.0
+Version: 2.0.1
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -39,11 +39,15 @@ class Schedulicity_Plugin {
 		}
 		$sched_hide_check = get_option( 'sched_hide_check' );
 		$sched_hide_check_bizkey = get_option( 'sched_hide_check_bizkey' );
+		$sched_bizkey = array();
 		$sched_bizkey = get_option( 'user_bizkey' );
 		if ($sched_hide_check != 'hide') {
 			add_action( 'admin_notices', array( &$this, 'sched_time_to_update' ), 0);
 		}
-		$sched_bizkey = array_filter($sched_bizkey);
+		if (is_array($sched_bizkey)) {
+			$sched_bizkey = array_filter($sched_bizkey);
+		}
+		//$sched_bizkey = array_filter($sched_bizkey);
 		if (($sched_hide_check_bizkey != 'hide') && (empty($sched_bizkey))){
 			add_action( 'admin_notices', array( &$this, 'missing_your_bizkey' ), 0);
 		}
