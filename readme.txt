@@ -2,12 +2,12 @@
 Contributors: jprummer
 Tags: scheduling, appointment scheduling, appointment, online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
-Tested up to: 3.8.1
-Stable tag: 2.0.1
+Tested up to: 3.8.2
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 20 million appointments booked. *Only available to users in the U.S. and Canada.
+The leader in online appointment booking with over 35 million appointments booked. *Only available to users in the U.S. and Canada.
 
 == Description ==
 
@@ -76,9 +76,14 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 
 == Changelog ==
 
+= 2.0.2 =
+
+* Improved Settings Page
+* Made embedded widget responsive
+
 = 2.0.1 =
 
-*Bug Fix: fixes array_filter error on line 46
+* Bug Fix: fixes array_filter error on line 46
 
 = 2.0.0 =
 
@@ -110,4 +115,39 @@ Fixed so widgets would display inline with text instead of at top of page.
 
 == Upgrade Notice ==
 
-Small, but significant changes have been made. Please see the changelog for version details.
+= 2.0.2 =
+
+* Improved Settings Page
+* Made embedded widget responsive
+
+= 2.0.1 =
+
+* Bug Fix: fixes array_filter error on line 46
+
+= 2.0.0 =
+
+Improved Code and more flexible shortcode management
+
+= 1.2.3 =
+
+Some basic cleanup
+
+= 1.2.2 = 
+
+Removed Responsive Widget, due to scheduling issues with Internet Explorer.
+
+= 1.2.1 = 
+
+Added functionality for multiple Schedulicity accounts.
+
+= 1.1.3 = 
+
+Added Schedule Now Buttons and recommendation for dealing with responsive widget I.E. issue.
+
+= 1.1.2 = 
+
+Fixed scrolling issue.
+
+= 1.1.1 = 
+
+Fixed so widgets would display inline with text instead of at top of page.

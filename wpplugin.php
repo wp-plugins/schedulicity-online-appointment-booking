@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 2.0.1
+Version: 2.0.2
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -21,6 +21,7 @@ License: GPL2
 */
 class Schedulicity_Plugin {
 
+	private static $add_script;
 	/**
 	 * Construct.
 	 */
@@ -29,6 +30,9 @@ class Schedulicity_Plugin {
 		add_action('admin_init', array( &$this, 'schedulicityplugin_init'), 0 );
 		add_action('admin_menu', array( &$this, 'schedulicity_add_page'), 0 );
 		add_action('plugins_loaded', array( &$this, 'schedulicity_widgets'), 0 );
+		
+		add_action('init', array( &$this, 'register_script'));
+		add_action('wp_footer', array( &$this, 'print_script'));
 		
 		// Admin Notices
 		if ( ! empty( $_GET['hide_sched_check'] ) ) {
@@ -47,7 +51,7 @@ class Schedulicity_Plugin {
 		if (is_array($sched_bizkey)) {
 			$sched_bizkey = array_filter($sched_bizkey);
 		}
-		//$sched_bizkey = array_filter($sched_bizkey);
+
 		if (($sched_hide_check_bizkey != 'hide') && (empty($sched_bizkey))){
 			add_action( 'admin_notices', array( &$this, 'missing_your_bizkey' ), 0);
 		}
@@ -67,6 +71,21 @@ class Schedulicity_Plugin {
 	// Add menu page
 	function schedulicity_add_page() {
 		add_options_page('Schedulicity Plugin Setup', 'Schedulicity Setup', 'manage_options', 'schedulicity_options_page', array( &$this, 'schedulicity_options_do_page'));
+	}
+	
+	/**
+	 * Load JS
+	 */
+	static function register_script() {
+		wp_register_script('schedulicity-js', plugins_url( '/js/schedulicity.js' , __FILE__ ), array('jquery'),null,true);
+	}
+
+	static function print_script() {
+		if ( ! self::$add_script ) {
+			return;
+		} else {
+			wp_print_scripts('schedulicity-js');
+		}
 	}
 
 	// Draw the menu page itself
@@ -106,8 +125,17 @@ class Schedulicity_Plugin {
 						</p>
 						</ul>
 					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Two - Set Up</li>
+						<!--
 						<ul style="font-size: 16px">
 							Use the [schedule_now] shortcode to add scheduling widgets. Use the [schedule_now_button] shortcode to add schedule now buttons. Refer to the <a href="?page=schedulicity_options_page&tab=advanced_setup#shortcodeinstruction">advanced options page</a> for more info.
+						</ul>
+						-->
+						<ul style="font-size: 16px">
+							Copy and paste the following shortcodes into a page, post or widget:
+							<br /><br />
+							<span style="color:green;font-weight:bold">[schedule_now]</span> - Generates Scheduling Widget
+							<br /><br />
+							<span style="color:green;font-weight:bold">[schedule_now_button]</span> - Generates Scheduling Button
 						</ul>
 					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Three - Start Scheduling!</li>
 						<ul style="font-size: 16px">
@@ -198,6 +226,7 @@ class Schedulicity_Plugin {
 	}
 
 	function schedulicity_widgets() {
+		self::$add_script = true;
 		// Retrieve Widget Type
 		$widget = get_option('widget_type');
 		$sched_widget = $widget['embedded'];
