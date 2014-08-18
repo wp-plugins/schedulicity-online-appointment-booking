@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 2.0.2
+Version: 2.0.3
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -168,14 +168,14 @@ class Schedulicity_Plugin {
 					<li><span style="margin-right: 20px"><strong>Embedded Widget</strong></span></li>
 					<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px ">
 					Shortcode: <span style="background: #b0f26d">[schedule_now widget="embedded"]</span> This widget is built right into a page on your site. You'll need to set aside 652 x 479 pixels for it to work. See
-					an <a href="http://schedulicity.wpovernight.com/embedded-widget/" target="_blank">example here.</a>
+					an <a href="http://wpdemo.schedulicity.com/embedded-widget/" target="_blank">example here.</a>
 					</ul>
 					<li>
 						<span style="margin-right: 46px"><strong>Overlay Widget</strong></span>
 					</li>
 					<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px">
 					Shortcode: <span style="background: #b0f26d">[schedule_now widget="overlay"]</span> A schedule now button will hang on the side of your screen. Your schedule will pop up when the user clicks the button. See
-					an <a href="http://schedulicity.wpovernight.com/overlay-widget/" target="_blank">example here.</a>
+					an <a href="http://wpdemo.schedulicity.com/overlay-widget/" target="_blank">example here.</a>
 					</ul>
 					</ul>
 					<h4>3. Adding Schedule Now Buttons</h4>
@@ -185,7 +185,7 @@ class Schedulicity_Plugin {
 					</div>
 					<div>
 					<ul style="font-size: 14px; margin-left: 20px">
-					Just insert the shortcode <span style="background: #b0f26d">[schedule_now_button]</span> on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear. <a href="http://schedulicity.wpovernight.com/responsive-button/" target="_blank">See example</a>
+					Just insert the shortcode <span style="background: #b0f26d">[schedule_now_button]</span> on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear. <a href="http://wpdemo.schedulicity.com/responsive-button/" target="_blank">See example</a>
 					<br /><br />
 					You can also customize the button to have it align left, align right, or align center (default) just add the align attribute to the shortcode. Example: <span style="background: #b0f26d">[schedule_now_button align="center"]</span>. The align attribute can be any of the following: align="left", align="center", align="right".
 					<br /><br />
