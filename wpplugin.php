@@ -109,6 +109,9 @@ class Schedulicity_Plugin {
 			<div style="background: #FFF;-moz-border-radius: 3px;border-radius: 3px;margin:5%;margin-top: 30px;padding: 20px;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;">
 				
 			<div style="margin-bottom: 20px">
+			<span style="float:right;">
+				Like Us? <a href="https://wordpress.org/support/view/plugin-reviews/schedulicity-online-appointment-booking?filter=5#postform" style="color:green;font-weight:bold" target="_blank">Rate Us on WordPress.org!</a>
+			</span>
 			<img src="<?php echo plugins_url( 'schedulicitylogo.jpg', __FILE__ ); ?>" style="width: 200px; margin-bottom: 10px" />
 			<h2>Schedulicity Plugin Setup</h2>
 			</div>
@@ -150,6 +153,9 @@ class Schedulicity_Plugin {
 			else {
 			?>
 			<div style="background: #FFF;-moz-border-radius: 3px;border-radius: 3px;margin:5%;margin-top: 30px;padding: 20px;-moz-box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;">
+				<span style="float:right;">
+					Like Us? <a href="https://wordpress.org/support/view/plugin-reviews/schedulicity-online-appointment-booking?filter=5#postform" style="color:green;font-weight:bold" target="_blank">Rate Us on WordPress.org!</a>
+				</span>
 				<img src="<?php echo plugins_url( 'schedulicitylogo.jpg', __FILE__ ); ?>" style="width: 200px; margin-bottom: 10px" />
 				<h2>Schedulicity Advanced Setup</h2>
 				<div id="bizkey">
