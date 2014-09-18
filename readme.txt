@@ -2,12 +2,12 @@
 Contributors: jprummer
 Tags: scheduling, appointment scheduling, appointment, online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 35 million appointments booked. *Only available to users in the U.S. and Canada.
+The leader in online appointment booking with over 40 million appointments booked. *Only available to users in the U.S. and Canada.
 
 == Description ==
 
