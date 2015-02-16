@@ -2,22 +2,22 @@
 Contributors: jprummer
 Tags: scheduling, appointment scheduling, appointment, online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
-Tested up to: 4.0
-Stable tag: 2.0.3
+Tested up to: 4.1
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The leader in online appointment booking with over 40 million appointments booked. *Only available to users in the U.S. and Canada.
+The leader in online appointment booking with over 50 million appointments booked. *Only available to users in the U.S. and Canada.
 
 == Description ==
 
-If you already have Schedulicity, easily integrate with your site using the [schedule_now] and [schedule_now_button] shortcodes. You just need your
+If you already have Schedulicity, easily integrate with your site using our easy shortcode generator. You just need your
 6 character unique business key which you can find by logging into your account or by emailing 
 <a href="mailto:support@schedulicity.com">support@schedulicity.com</a>.
 
 Features:
 
-* 2 widget styles & 3 button styles.
+* 2 widget styles & 97 button styles.
 * Use a button, widget, or both!
 * Support for multiple accounts.
 * Easy setup with great support.
@@ -76,6 +76,10 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 
 == Changelog ==
 
+= 2.1 =
+
+* Added shortcode generator
+
 = 2.0.3 =
 
 * Updated Demo Site
@@ -118,6 +122,10 @@ Fixed scrolling issue.
 Fixed so widgets would display inline with text instead of at top of page.
 
 == Upgrade Notice ==
+
+= 2.1 =
+
+* Added shortcode generator
 
 = 2.0.3 =
 
