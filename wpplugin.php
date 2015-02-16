@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 2.0.3
+Version: 2.1
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -33,6 +33,8 @@ class Schedulicity_Plugin {
 		
 		add_action('init', array( &$this, 'register_script'));
 		add_action('wp_footer', array( &$this, 'print_script'));
+
+		add_action( 'admin_enqueue_scripts', array(&$this,'load_styles'));
 		
 		// Admin Notices
 		if ( ! empty( $_GET['hide_sched_check'] ) ) {
@@ -80,6 +82,19 @@ class Schedulicity_Plugin {
 		wp_register_script('schedulicity-js', plugins_url( '/js/schedulicity.js' , __FILE__ ), array('jquery'),null,true);
 	}
 
+	/**
+	 * Load CSS
+	 */
+	public function load_styles() {
+		
+		$css = file_exists( get_stylesheet_directory() . '/schedulicity-admin.css' )
+			? get_stylesheet_directory_uri() . '/schedulicity-admin.css'
+			: plugins_url( '/css/schedulicity-admin.css', __FILE__ );
+			
+		wp_register_style( 'schedulicity-admin', $css, array(), '', 'all' );
+		wp_enqueue_style( 'schedulicity-admin' );
+	}
+
 	static function print_script() {
 		if ( ! self::$add_script ) {
 			return;
@@ -122,30 +137,161 @@ class Schedulicity_Plugin {
 					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step One - Insert Your Biz Key</li>
 						<?php $options = get_option('user_bizkey'); ?>			
 						<ul style="font-size: 16px">
-						Business Key: <input type="text" name="user_bizkey[bizkey]" value="<?php echo $options['bizkey']; ?>" /><input type="submit" class="button-primary" value="<?php _e('Save Business Key') ?>" style="margin-left: 20px" /><span style="margin-left: 20px;font-size: 14px"><a href="?page=schedulicity_options_page&tab=advanced_setup#bizkey">What's my Business Key?</a></span>
+						Business Key: <input type="text" name="user_bizkey[bizkey]" id="bizkey_field" value="<?php echo $options['bizkey']; ?>" /><input type="submit" class="button-primary" value="<?php _e('Save Business Key') ?>" style="margin-left: 20px" /><span style="margin-left: 20px;font-size: 14px"><a href="?page=schedulicity_options_page&tab=advanced_setup#bizkey">What's my Business Key?</a></span>
 						<p> 
 							If you don't have a Schedulicity account <a href="http://www.schedulicity.com/?anic=wordpress" target="_blank">click here</a> to get 30 days free.
 						</p>
 						</ul>
-					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Two - Set Up</li>
-						<!--
-						<ul style="font-size: 16px">
-							Use the [schedule_now] shortcode to add scheduling widgets. Use the [schedule_now_button] shortcode to add schedule now buttons. Refer to the <a href="?page=schedulicity_options_page&tab=advanced_setup#shortcodeinstruction">advanced options page</a> for more info.
-						</ul>
-						-->
-						<ul style="font-size: 16px">
-							Copy and paste the following shortcodes into a page, post or widget:
-							<br /><br />
-							<span style="color:green;font-weight:bold">[schedule_now]</span> - Generates Scheduling Widget
-							<br /><br />
-							<span style="color:green;font-weight:bold">[schedule_now_button]</span> - Generates Scheduling Button
-						</ul>
+					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Two - Create Your Shortcode</li>
+							<ul style="font-size: 16px">
+							<p>
+								Choose from 97 button types and 2 widgets. Just click the button size you want and the style and watch the button shortcode change to the right.
+								If you want to add a Scheduling widget click either the embedded or overlay widget below.
+							</p>
+							<div style="margin-left: -4%;margin-right: -1%">	
+								<div class="type-panel">
+				                    <span data-value="lg" class="selected"><img ng-src="//cdn.schedulicity.com/images/schedulenow_lt_green3_lg.png" src="//cdn.schedulicity.com/images/schedulenow_lt_green3_lg.png"></span>
+				                    <span data-value="md"><img ng-src="//cdn.schedulicity.com/images/schedulenow_lt_green3_md.png" src="//cdn.schedulicity.com/images/schedulenow_lt_green3_md.png"></span>
+				                    <span data-value="sm"><img ng-src="//cdn.schedulicity.com/images/schedulenow_lt_green3_sm.png" src="//cdn.schedulicity.com/images/schedulenow_lt_green3_sm.png"></span>
+				                    <span data-value="url">URL only</span><br>
+				                </div>
+								<div class="button-panel" ng-show="showButtons">
+				                    <div>
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_blue1_md.png" data-id="lt_blue1">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_blue4_md.png" data-id="lt_blue4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_blue7_md.png" data-id="lt_blue7">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_darktone3_md.png" data-id="lt_darktone3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_darktone4_md.png" data-id="lt_darktone4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_green2_md.png" data-id="lt_green2">
+				                        <img class="button-img ng-scope selected" src="//cdn.schedulicity.com/images/schedulenow_lt_green3_md.png" data-id="lt_green3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_green4_md.png" data-id="lt_green4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_green8_md.png" data-id="lt_green8">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_red2_md.png" data-id="lt_red2">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_red3_md.png" data-id="lt_red3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_red7_md.png" data-id="lt_red7">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_yellow2_md.png" data-id="lt_yellow2">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_yellow3_md.png" data-id="lt_yellow3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_yellow5_md.png" data-id="lt_yellow5">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_lt_yellow7_md.png" data-id="lt_yellow7">
+				                    </div>
+				                    <div>
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_blue1_md.png" data-id="dk_blue1">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_blue4_md.png" data-id="dk_blue4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_blue7_md.png" data-id="dk_blue7">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_darktone1_md.png" data-id="dk_darktone1">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_darktone4_md.png" data-id="dk_darktone4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_green2_md.png" data-id="dk_green2">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_green3_md.png" data-id="dk_green3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_green4_md.png" data-id="dk_green4">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_green8_md.png" data-id="dk_green8">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_red2_md.png" data-id="dk_red2">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_red3_md.png" data-id="dk_red3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_red7_md.png" data-id="dk_red7">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_yellow2_md.png" data-id="dk_yellow2">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_yellow3_md.png" data-id="dk_yellow3">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_yellow5_md.png" data-id="dk_yellow5">
+				                        <img class="button-img ng-scope" src="//cdn.schedulicity.com/images/schedulenow_dk_yellow7_md.png" data-id="dk_yellow7">
+				                    </div>
+				                </div>
+				                <div class="shortcode-updater" id="button-shortcode-updater">
+				                	<h2>Button ShortCode</h2>
+				                	<p>Copy the below shortcode and paste it into any page or post.</p>
+				                	<img src="http://cdn.schedulicity.com/images/schedulenow_lt_green3_lg.png" />
+				                	<input type="text" name="sched_shortcode" id="sched_shortcode" value="[schedule_now_button style='lt_green3_md']" />
+				                </div>
+				                <div class="schedclear first"></div>
+				                <div class="formsection primary button-panel">
+					                <span id="widgetheader">
+					                	<h2>Website - scheduling widget</h2>
+					                	<p>Clients can easily book an appointment without ever leaving your website.</p>
+					                </span>
+				                	<span id="embeddedwidget" class="widgetselector">
+				                		<div class="checkbox"></div>
+				                		<h3>Embedded scheduling widget</h3>
+				                		<p>Embed the scheduling widget on your site so that clients can book from their desktop, tablet, or mobile phone.</p>
+				                	</span>
+				                	<span id="overlaywidget" class="widgetselector">
+				                		<div class="checkbox"></div>
+				                		<h3>Overlay scheduling widget</h3>
+				                		<p>Add the overlay widget to every page of your website for quick, accessible scheduling for your clients</p>
+				                	</span>
+					            </div>
+					            <div class="shortcode-updater" id="widget-shortcode-updater">
+				                	<h2>Widget ShortCode</h2>
+				                	<p>Copy the below shortcode and paste it into any page or post.</p>
+				                	<!--<img src="http://cdn.schedulicity.com/images/schedulenow_lt_green3_lg.png" />-->
+				                	<input type="text" name="sched_shortcode" id="sched_widgetshortcode" value="[schedule_now widget='embedded']" />
+				                </div>
+				                <div class="schedclear"></div>
+				            </div>
+				            </ul>
 					<li style="font-size: 18px; font-weight: bold; margin-top: 10px;margin-bottom:10px">Step Three - Start Scheduling!</li>
 						<ul style="font-size: 16px">
 						Once you've added the shortcode to a page or post, just give it a quick test to make sure it works. If you have any issues, email <a href="mailto:support@schedulicity.com">support@schedulicity.com</a> or call <strong>877-582-0494</strong>. When you're ready, send your customers to your site to start booking their appointments!
 						</ul>
 				</ol>
-				
+                <script type="text/javascript">
+                	jQuery( document ).ready(function( $ ) {
+						$('.button-img').click(function(){
+							$('.button-img.selected').removeClass('selected');
+							$(this).addClass('selected');
+							button_show_shortcode();
+						});
+						$('div.checkbox').click(function(){
+							$sibling = $(this).parent().siblings(".widgetselector").find(".checkbox");
+							if($(this).hasClass('selected')){
+								$(this).removeClass('selected');
+								widget_show_shortcode();
+							} else {
+								$(this).addClass('selected');
+								$sibling.removeClass('selected');
+								widget_show_shortcode();
+							}
+						});
+
+						$('.type-panel span').click(function(){
+							$('.type-panel span.selected').removeClass('selected');
+							$(this).addClass('selected');
+							button_show_shortcode();
+						});
+						$('#sched_shortcode, #sched_widgetshortcode').click(function(){
+							$(this).select();
+						});
+						$bizkey = '<?php echo $options["bizkey"] ?>';
+						function button_show_shortcode(){
+							$style = $('.button-img.selected').data('id');
+							$size = $('.type-panel .selected').data('value');
+							if($style == null){
+								$style = 'lt_green3';
+							}
+							if($size == null){
+								$size = 'md';
+							}
+							$url = '//cdn.schedulicity.com/images/schedulenow_'+$style+'_'+$size+'.png';
+							$('#button-shortcode-updater #sched_shortcode').fadeTo(700, 0.5, function() { $('#button-shortcode-updater #sched_shortcode').fadeTo(600, 1); });
+							$('#button-shortcode-updater img').attr('src',$url);
+							$('#button-shortcode-updater #sched_shortcode').val("[schedule_now_button style='"+$style+"_"+$size+"']");
+							$('#button-shortcode-updater > img').show();
+							if($size != 'url'){
+								$('#button-shortcode-updater > img').show();
+								$('#button-shortcode-updater > img').fadeTo(700, 0.5, function() { $('#button-shortcode-updater > img').fadeTo(600, 1); });
+							}
+							if($size == 'url'){
+								$('#sched_shortcode').val('https://www.schedulicity.com/scheduling/'+$bizkey);
+								$('#button-shortcode-updater > img').hide();
+							}
+						}
+
+						function widget_show_shortcode(){
+							$('#sched_widgetshortcode').fadeTo(700, 0.5, function() { $('#sched_widgetshortcode').fadeTo(600, 1); });
+							if($('#overlaywidget div.checkbox').hasClass('selected')){
+								$('#sched_widgetshortcode').val('[schedule_now widget="overlay"]');
+							} else {
+								$('#sched_widgetshortcode').val('[schedule_now widget="embedded"]');
+							}
+						}
+					});
+                </script>
 			</form>
 			</div>
 			<?php
@@ -166,46 +312,8 @@ class Schedulicity_Plugin {
 						<p style="margin-left: 20px; font-size: 14px">2. Login to your Schedulicity account. Click the 'Marketing' tab and then click 'Access Your Widgets'. In the middle of the page you'll see the Facebook Widget info. Your business key is listed there.</p>
 					</p>
 				</div>
-				<div id="shortcodeinstruction">
-					<h4>2. Customizing Your Shortcode</h4>
-					<p style="margin-left: 20px; font-size: 14px">The [schedule_now] shortcode can be customized to meet your needs. By default the embedded widget is used, but you can easily change it to the overlay widget using the method below. As well you can add as many embedded widgets as you want to a page, but can only have one overlay widget per page. See section <a href="?page=schedulicity_options_page&tab=advanced_setup#multipleaccounts">4. Use with Multiple Schedulicity Accounts</a> for more info.</p>
-					<div>
-					<ul style="font-size: 16px">	
-					<li><span style="margin-right: 20px"><strong>Embedded Widget</strong></span></li>
-					<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px ">
-					Shortcode: <span style="background: #b0f26d">[schedule_now widget="embedded"]</span> This widget is built right into a page on your site. You'll need to set aside 652 x 479 pixels for it to work. See
-					an <a href="http://wpdemo.schedulicity.com/embedded-widget/" target="_blank">example here.</a>
-					</ul>
-					<li>
-						<span style="margin-right: 46px"><strong>Overlay Widget</strong></span>
-					</li>
-					<ul style="font-size: 14px; margin-left: 20px; margin-bottom: 10px">
-					Shortcode: <span style="background: #b0f26d">[schedule_now widget="overlay"]</span> A schedule now button will hang on the side of your screen. Your schedule will pop up when the user clicks the button. See
-					an <a href="http://wpdemo.schedulicity.com/overlay-widget/" target="_blank">example here.</a>
-					</ul>
-					</ul>
-					<h4>3. Adding Schedule Now Buttons</h4>
-					<ul style="font-size: 16px">
-					<li><span style="margin-right: 45px"><strong>Schedule Now Buttons</strong></span></li>
-					</ul>
-					</div>
-					<div>
-					<ul style="font-size: 14px; margin-left: 20px">
-					Just insert the shortcode <span style="background: #b0f26d">[schedule_now_button]</span> on any page or post. A Schedule Now button linking to your Schedulicity account will automatically appear. <a href="http://wpdemo.schedulicity.com/responsive-button/" target="_blank">See example</a>
-					<br /><br />
-					You can also customize the button to have it align left, align right, or align center (default) just add the align attribute to the shortcode. Example: <span style="background: #b0f26d">[schedule_now_button align="center"]</span>. The align attribute can be any of the following: align="left", align="center", align="right".
-					<br /><br />
-					Finally, you can customize the button style by adding the style attribute to the [schedule_now_button] shortcode. Example:
-					<span style="background: #b0f26d">[schedule_now_button align="center" style="button10"]</span>. See chart below for the style attribute value of each button.
-					</ul>	
-					</div>
-					<div style="text-align:center">
-					<img src="<?php echo plugins_url( '/images/schedule_now_button_layout.png', __FILE__ ); ?>" style="max-width: 100%;" />
-					</div>
-					
-				</div>
 				<div id="multipleaccounts">
-					<h4>4. Use With Multiple Schedulicity Accounts</h4>
+					<h4>2. Use With Multiple Schedulicity Accounts</h4>
 					<p style="margin-left: 20px; font-size: 14px">Using the Schedulicity plugin with multiple accounts is easy! Just add 
 					<span style="color: #4b9500">bizkey=" "</span> to the [schedule_now] or [schedule_now_button] shortcodes and place your bizkey between the quotes. 
 					Examples: <span style="background: #ffef73">[schedule_now <span style="color: #4b9500">bizkey="SSTJP8"</span>]</span> or 
@@ -213,7 +321,7 @@ class Schedulicity_Plugin {
 					to your site as needed.</p>
 				</div>
 				<div id="supportinfo">
-					<h4>5. Support Issues</h4>
+					<h4>3. Support Issues</h4>
 					<p style="margin-left: 20px; font-size: 14px">
 						If you have any questions please feel free to reach out to the Schedulicity support team.
 						<br /><br />
@@ -323,11 +431,17 @@ class Schedulicity_Plugin {
 				}
 				if (!empty($style)) {
 					$image_url = '';
-					$style = str_replace('button','', $style);
-					if ($style < 10){
-						$style = sprintf('%02d', $style);
-					}
-					$image_url = '//d2k394ztg01v3m.cloudfront.net/images/schedulenow_'.$style.'_'.$size.'.png';
+					$oldstyle = strpos($style, 'button');
+					if($oldstyle !== false){
+						$style = str_replace('button','', $style);
+						if ($style < 10){
+							$style = sprintf('%02d', $style);
+						}
+						$image_url = '//d2k394ztg01v3m.cloudfront.net/images/schedulenow_'.$style.'_'.$size.'.png';
+					} elseif ($oldstyle === false){
+						$image_url = '//cdn.schedulicity.com/images/schedulenow_'.$style.'.png';
+					}					
+					
 					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="'.$image_url.'" alt="Schedule online now" border="0" /></a></div>';
 				}
 				else {
