@@ -3,7 +3,7 @@
 Plugin Name: Schedulicity - Easy Online Scheduling
 Plugin URI: www.schedulicity.com
 Description: Wordpress Plugin that allows you to easily integrate schedulicity with one command. Activate the plugin, and navigate to the "Settings" tab on the Wordpress dashboard. Then click Schedulicity Setup. Set your business key and select which plugin type you want. Then place the [schedule_now] shortcode on any page/post and your booking calendar will automatically appear.
-Version: 2.1
+Version: 2.1.1
 Author: Schedulicity Inc.
 Author URI: www.schedulicity.com
 License: GPL2
@@ -352,8 +352,9 @@ class Schedulicity_Plugin {
 					$bizkey = get_option('user_bizkey');
 					$sched_bizkey = $bizkey['bizkey'];
 					extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
-					$content ='';
-					$content .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/popupjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+					$content = '<script type="text/javascript" src="https://www.schedulicity.com/scheduling/widget/';
+					$content .= $bizkey;
+					$content .= '/popupscript"></script>';
 					return $content;		
 				}
 				add_shortcode('schedule_now', 'overlay_widget');
@@ -364,8 +365,9 @@ class Schedulicity_Plugin {
 					$bizkey = get_option('user_bizkey');
 					$sched_bizkey = $bizkey['bizkey'];
 					extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
-					$content ='';
-					$content .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+					$content = '<script type="text/javascript" src="https://www.schedulicity.com/scheduling/widget/';
+					$content .= $bizkey;
+					$content .= '/embedscript"></script>';
 					return $content;
 				}
 				add_shortcode('schedule_now', 'embedded_widget');
@@ -378,14 +380,20 @@ class Schedulicity_Plugin {
 				$bizkey = get_option('user_bizkey');
 				$sched_bizkey = $bizkey['bizkey'];
 				extract(shortcode_atts( array('bizkey' => $sched_bizkey, 'widget' => 'embedded') , $atts));
-				$content = '';
+				if(empty($bizkey)){
+					$bizkey = $sched_bizkey;
+				}
 				if ($widget == 'overlay') {
-					$content .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/popupjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+					$content = '<script type="text/javascript" src="https://www.schedulicity.com/scheduling/widget/';
+					$content .= $bizkey;
+					$content .= '/popupscript"></script>';
 				}
 				else {
-					$content .= $return .= '<script type="text/javascript" src="http://www.schedulicity.com/Scheduling/Embed/embedjs.aspx?business=' . $bizkey . '"></script><noscript><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business=' . $bizkey . '"" title="Online Scheduling">Schedule Now</a></noscript>';
+					$content = '<script type="text/javascript" src="https://www.schedulicity.com/scheduling/widget/';
+					$content .= $bizkey;
+					$content .= '/embedscript"></script>';
 				}
-				return $content;		
+				return $content;	
 			}
 			add_shortcode('schedule_now', 'standard_widget');
 		
@@ -394,7 +402,7 @@ class Schedulicity_Plugin {
 				$user_bizkey = get_option('user_bizkey');
 				$sched_bizkey = $user_bizkey['bizkey'];
 				extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
-				$sched_button_left_sc = '<div style="text-align: left"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business='.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+				$sched_button_left_sc = '<div style="text-align: left"><a href="http://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				return $sched_button_left_sc;
 		}
 				
@@ -402,7 +410,7 @@ class Schedulicity_Plugin {
 				$user_bizkey = get_option('user_bizkey');
 				$sched_bizkey = $user_bizkey['bizkey'];
 				extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
-				$sched_button_center_sc = '<div style="text-align: center"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business='.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+				$sched_button_center_sc = '<div style="text-align: center"><a href="http://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				return $sched_button_center_sc;
 		}
 		
@@ -410,7 +418,7 @@ class Schedulicity_Plugin {
 				$user_bizkey = get_option('user_bizkey');
 				$sched_bizkey = $user_bizkey['bizkey'];
 				extract(shortcode_atts( array('bizkey' => $sched_bizkey) , $atts));
-				$sched_button_right_sc = '<div style="text-align: right"><a href="http://www.schedulicity.com/Scheduling/Default.aspx?business='.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+				$sched_button_right_sc = '<div style="text-align: right"><a href="http://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				return $sched_button_right_sc;
 		}
 		
@@ -442,23 +450,23 @@ class Schedulicity_Plugin {
 						$image_url = '//cdn.schedulicity.com/images/schedulenow_'.$style.'.png';
 					}					
 					
-					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="'.$image_url.'" alt="Schedule online now" border="0" /></a></div>';
+					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="'.$image_url.'" alt="Schedule online now" border="0" /></a></div>';
 				}
 				else {
-					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				}
 				/*
 				if ($align == 'right') {
-					$sched_button = '<div style="text-align: right"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+					$sched_button = '<div style="text-align: right"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				}
 				else if ($align == 'left') {
-					$sched_button = '<div style="text-align: left"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+					$sched_button = '<div style="text-align: left"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				}
 				else {
-					$sched_button = '<div style="text-align: center"><a href="https://www.schedulicity.com/Scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
+					$sched_button = '<div style="text-align: center"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				}
 				*/
-				$sched_button .='<script>if (window.innerWidth <= 600){document.getElementById("schednowlink").href="https://m.schedulicity.com/Scheduling/'.$bizkey.'"}</script>';
+				$sched_button .='<script>if (window.innerWidth <= 600){document.getElementById("schednowlink").href="https://m.schedulicity.com/scheduling/'.$bizkey.'"}</script>';
 				return $sched_button;
 		}
 		

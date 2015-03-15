@@ -3,7 +3,7 @@ Contributors: jprummer
 Tags: scheduling, appointment scheduling, appointment, online scheduling, online appointment book, hair, massage, nails, spa, acupuncture, health, wellness, schedulicity
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 
 == Changelog ==
 
+= 2.1.1 =
+
+* Compatibility with #thenewschedulicity
+
 = 2.1 =
 
 * Added shortcode generator
@@ -122,6 +126,10 @@ Fixed scrolling issue.
 Fixed so widgets would display inline with text instead of at top of page.
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+
+**This is a CRITICAL Update. Your website widgets will not work until you update**
 
 = 2.1 =
 
