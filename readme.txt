@@ -72,7 +72,7 @@ Yes. Please see the section about using the Schedulicity plugin for 2 or more us
 1. Screenshot of the settings panel. 
 2. This is an example of the overlay widget.
 3. This is an example of the embedded widget.
-4. Schedule Now Buttons aligned center, left and right.
+4. Screenshot of the Schedule-Now button generator.
 
 == Changelog ==
 
