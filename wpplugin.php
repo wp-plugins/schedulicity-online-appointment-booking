@@ -455,18 +455,7 @@ class Schedulicity_Plugin {
 				else {
 					$sched_button = '<div style="text-align: '.$alignment.'"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
 				}
-				/*
-				if ($align == 'right') {
-					$sched_button = '<div style="text-align: right"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
-				}
-				else if ($align == 'left') {
-					$sched_button = '<div style="text-align: left"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
-				}
-				else {
-					$sched_button = '<div style="text-align: center"><a href="https://www.schedulicity.com/scheduling/'.$bizkey.'" title="Online scheduling" target="_blank" id="schednowlink"><img src="http://www.schedulicity.com/Business/Images/ScheduleNow_LG.png" alt="Schedule online now" border="0" /></a></div>';
-				}
-				*/
-				$sched_button .='<script>if (window.innerWidth <= 600){document.getElementById("schednowlink").href="https://m.schedulicity.com/scheduling/'.$bizkey.'"}</script>';
+				
 				return $sched_button;
 		}
 		
